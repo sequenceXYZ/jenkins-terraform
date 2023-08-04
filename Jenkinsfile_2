@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('SCM checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/sequenceXYZ/jenkins-terraform-vpc.git'
+                git branch: 'main', url: 'https://github.com/sequenceXYZ/jenkins-terraform.git'
         }
     }
         stage('TF init') {
