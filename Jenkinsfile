@@ -12,8 +12,8 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                sh 'mkdir terraform
-                git 'https://github.com/sequenceXYZ/jenkins-terraform.git'
+                sh 'mkdir terraform'
+                git branch: 'main', url: 'https://github.com/sequenceXYZ/jenkins-terraform.git'
             }
         }
 
