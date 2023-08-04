@@ -12,16 +12,16 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                sh 'mkdir terraform1'
+                sh 'mkdir terraform'
                 git branch: 'main', url: 'https://github.com/sequenceXYZ/jenkins-terraform.git'
             }
         }
 
         stage('Plan') {
             steps {
-                sh 'pwd;cd terraform1/ ; terraform init'
-                sh "pwd;cd terraform1/ ; terraform plan -out tfplan"
-                sh 'pwd;cd terraform1/ ; terraform show -no-color tfplan > tfplan.txt'
+                sh 'pwd;cd terraform/ ; terraform init'
+                sh "pwd;cd terraform/ ; terraform plan -out tfplan"
+                sh 'pwd;cd terraform/ ; terraform show -no-color tfplan > tfplan.txt'
             }
         }
         stage('Approval') {
@@ -42,7 +42,7 @@ pipeline {
 
         stage('Apply') {
             steps {
-                sh "pwd;cd terraform1/ ; terraform apply -input=false tfplan"
+                sh "pwd;cd terraform/ ; terraform apply -input=false tfplan"
             }
         }
     }
