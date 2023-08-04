@@ -18,9 +18,10 @@ pipeline {
 
         stage('Plan') {
             steps {
-                sh 'pwd;cd jenkins-terraform/ ; terraform init'
-                sh "pwd;cd jenkins-terraform/ ; terraform plan -out tfplan"
-                sh 'pwd;cd jenkins-terraform/ ; terraform show -no-color tfplan > tfplan.txt'
+                sh 'pwd' 
+                sh 'terraform init'
+                sh 'terraform plan -out tfplan'
+                sh 'terraform show -no-color tfplan > tfplan.txt'
             }
         }
         stage('Approval') {
@@ -41,7 +42,8 @@ pipeline {
 
         stage('Apply') {
             steps {
-                sh "pwd;cd jenkins-terraform/ ; terraform apply -input=false tfplan"
+                sh 'pwd'
+                sh 'terraform apply -input=false tfplan'
             }
         }
     }
