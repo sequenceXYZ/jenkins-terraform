@@ -33,7 +33,7 @@ pipeline {
 
            steps {
                script {
-                    def plan = readFile 'jenkins-terraform/tfplan.txt'
+                    def plan = readFile 'terraform/tfplan.txt'
                     input message: "Do you want to apply the plan?",
                     parameters: [text(name: 'Plan', description: 'Please review the plan', defaultValue: plan)]
                }
